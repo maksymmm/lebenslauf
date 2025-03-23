@@ -50,8 +50,11 @@
             font-weight: bold;
         }
 
+        /* Кнопки зміни мови */
         .language-buttons {
-            margin-top: 20px;
+            position: absolute;
+            right: 20px;
+            top: 20px;
         }
 
         button {
@@ -100,6 +103,26 @@
             margin-bottom: 10px;
         }
 
+        /* Стиль для прикладів резюме */
+        .resume-examples {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .resume-example {
+            width: 250px;
+            margin-bottom: 20px;
+        }
+
+        .resume-example img {
+            width: 100%;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+        }
+
         @media (max-width: 768px) {
             header {
                 text-align: center;
@@ -107,6 +130,8 @@
 
             .language-buttons {
                 margin-top: 10px;
+                position: relative;
+                right: 0;
             }
         }
     </style>
@@ -122,7 +147,8 @@
                     testimonials: [
                         "John Doe: Thanks to Max, I got my dream job in Germany!",
                         "Maria Schmidt: The CV I got was exactly what I needed. Highly recommend!"
-                    ]
+                    ],
+                    resumeExamples: "Here are some examples of CVs I have created for my clients. They have successfully landed jobs in Germany!"
                 },
                 de: {
                     welcome: "Willkommen bei Max' CV Schreibservice",
@@ -133,7 +159,8 @@
                     testimonials: [
                         "John Doe: Dank Max habe ich meinen Traumjob in Deutschland bekommen!",
                         "Maria Schmidt: Der Lebenslauf, den ich bekam, war genau das, was ich brauchte. Sehr zu empfehlen!"
-                    ]
+                    ],
+                    resumeExamples: "Hier sind einige Beispiele von Lebensläufen, die ich für meine Kunden erstellt habe. Sie haben erfolgreich Jobs in Deutschland bekommen!"
                 }
             };
 
@@ -142,6 +169,7 @@
             document.getElementById("contactText").innerText = content[lang].contactText;
             document.getElementById("emailButton").innerText = content[lang].emailButton;
             document.getElementById("telegramText").innerText = content[lang].telegramText;
+            document.getElementById("resumeExamplesText").innerText = content[lang].resumeExamples;
 
             // Testimonials
             const testimonialsContainer = document.getElementById("testimonials");
@@ -162,19 +190,37 @@
         <nav>
             <ul>
                 <li><a href="#about">About</a></li>
+                <li><a href="#resume-examples">Resume Examples</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
-    </header>
 
-    <div class="language-buttons">
-        <button onclick="changeLanguage('en')">English</button>
-        <button onclick="changeLanguage('de')">Deutsch</button>
-    </div>
+        <!-- Кнопки для зміни мови -->
+        <div class="language-buttons">
+            <button onclick="changeLanguage('en')">English</button>
+            <button onclick="changeLanguage('de')">Deutsch</button>
+        </div>
+    </header>
 
     <section id="about">
         <h1 id="welcome">Welcome to Max's CV Writing Service</h1>
         <p id="description">I help you create professional CVs that can help you find a job in Germany. Just send me a message and I'll assist you in making a great CV!</p>
+    </section>
+
+    <section id="resume-examples">
+        <h2 id="resumeExamplesText">Resume Examples</h2>
+        <p>Here are some examples of CVs I have created for my clients. They have successfully landed jobs in Germany!</p>
+        <div class="resume-examples">
+            <div class="resume-example">
+                <img src="cv/resume1.png" alt="Sample Resume 1">
+            </div>
+            <div class="resume-example">
+                <img src="cv/resume2.png" alt="Sample Resume 2">
+            </div>
+            <div class="resume-example">
+                <img src="cv/resume3.png" alt="Sample Resume 3">
+            </div>
+        </div>
     </section>
 
     <section id="testimonials" class="testimonial">
@@ -185,8 +231,4 @@
     <section id="contact">
         <h2>Contact Me</h2>
         <p id="contactText">Have any questions or want to start your CV? Get in touch with me!</p>
-        <button id="emailButton" class="contact-btn" onclick="window.location.href = 'mailto:lebenslauf76@gmail.com';">Send an Email</button>
-        <p><span id="telegramText">Or message me on Telegram</span> <a href="https://t.me/Sulyma126" target="_blank">@Sulyma126</a></p>
-    </section>
-</body>
-</html>
+        <button id="emailButton" class="contact-btn" onclick="window.location.href = 'mailto:lebenslauf76@gmail.com';">Send an Email</button
